@@ -3,16 +3,19 @@ package com.cs.dao;
 import com.cs.bean.SAdmin;
 import com.cs.commom.bean.Pager4EasyUI;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by 举 on 2016/11/29.
  */
-public class SAdminDAOImpl extends BaseDAO implements SAdminDAO {
+public class SAdminDAOImpl implements SAdminDAO {
 
 
     /**
@@ -31,6 +34,17 @@ public class SAdminDAOImpl extends BaseDAO implements SAdminDAO {
     }
 
     /**
+     * 根据id查询所有数据
+     */
+    @Override
+    public SAdmin queryById(Serializable id) {
+        Session session = sessionFactory.openSession();
+        SAdmin sAdmin = (SAdmin)session.get(SAdmin.class, id);
+        session.close();
+        return sAdmin;
+    }
+
+    /**
      * 分页查询管理员
      * @param pager
      * @return
@@ -38,7 +52,7 @@ public class SAdminDAOImpl extends BaseDAO implements SAdminDAO {
     @Override
     public Pager4EasyUI<SAdmin> queryAll(Pager4EasyUI<SAdmin> pager){
         Session session = sessionFactory.openSession();
-        Query query = session.createSQLQuery("select * from t_admin");
+        Query query = session.createQuery("FROM SAdmin");
         query.setFirstResult(pager.getBeginIndex());
         query.setMaxResults(pager.getPageSize());
         List<SAdmin> admins = query.list();
@@ -75,16 +89,27 @@ public class SAdminDAOImpl extends BaseDAO implements SAdminDAO {
 
     /**
      * 删除管理员
-     * @param id
+     * @param
      */
     @Override
-    public void deleteById(int id) {
+    public void delete() {
         Session session = sessionFactory.openSession();
         Transaction tran = session.beginTransaction();//开始事物
-        SAdmin p = (SAdmin)session.get(SAdmin.class, id); //获取id
-        System.out.print(p);
-        session.delete(p);
+        SAdmin sAdmin = new SAdmin();
+        session.delete(sAdmin);
         tran.commit();//提交
         session.close();
+    }
+
+    /**
+     * 禁用管理员
+     * @param status
+     */
+    @Override
+    public void update(String status) {
+        Session session = sessionFactory.openSession();
+        Transaction tran = session.beginTransaction();
+        session.update(status);
+        tran.commit();
     }
 }

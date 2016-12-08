@@ -26,6 +26,15 @@ public class SAdminServiceImpl implements SAdminService {
     }
 
     /**
+     * 根据id查询数据
+     */
+
+    @Override
+    public SAdmin queryById(String id) {
+        return  adminDAO.queryById(id);
+    }
+
+    /**
      * 分页查询管理员
      * @param pager
      * @return
@@ -55,10 +64,10 @@ public class SAdminServiceImpl implements SAdminService {
 
     /**
      * 删除管理员
-     * @param id
+     * @param
      */
     @Override
-    public void deleteById(int id) {
-        adminDAO.deleteById(id);
+    public void delete() {
+        adminDAO.delete();
     }
 }

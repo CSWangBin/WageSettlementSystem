@@ -16,6 +16,12 @@ public interface SAdminService {
     public SAdmin add(SAdmin admin);
 
     /**
+     * 根据id查询数据
+     */
+
+    public SAdmin queryById(String id);
+
+    /**
      * 分页查询管理员
      * @param pager
      * @return
@@ -36,7 +42,7 @@ public interface SAdminService {
 
     /**
      * 删除管理员
-     * @param id
+     * @param
      */
-    public void deleteById(int id);
+    public void delete();
 }

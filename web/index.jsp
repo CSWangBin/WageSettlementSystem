@@ -27,20 +27,14 @@
 		</div>
 		<div data-options="region:'west',split:true" title="菜单" style="width:240px;">
 			<div class="easyui-accordion menu" style="width:240px;">
-				<div title="商品管理">
+				<div title="管理员管理">
 					<ul>
-						<li><a href="javascript:;" onclick="addTab('所有商品','<%=path %>/admin.jsp');">所有商品</a></li>
-						<li><a href="javascript:;" onclick="addTab('系统设置','http://www.sina.com.cn');">系统设置</a></li>
-						<li>系统公告</li>
-						<li>系统监测</li>
+						<li><a href="javascript:;" onclick="addTab('所有管理员','<%=path %>/admin.jsp');">所有管理员</a></li>
 					</ul>
 				</div>
-				<div title="用户管理">
+				<div title="店长管理">
 					<ul>
-						<li><a href="#">修改密码</a></li>
-						<li>系统参数</li>
-						<li>系统公告</li>
-						<li>系统监测</li>
+						<li><a href="#">所有店长</a></li>
 					</ul>
 				</div>
 				<div title="消息管理">
@@ -48,28 +42,6 @@
 						<li><a href="#">修改密码</a></li>
 						<li>系统参数</li>
 						<li>系统公告</li>
-						<li>
-							<ul class="easyui-tree">
-								<!-- 这是第一个一级菜单 -->
-								<li>
-									<span>多级目录1</span>
-									<ul>
-										<li><a href="javascript:;" onclick="addTab('修改密码','http://www.baidu.com');">目录1</a></li>
-										<li>目录2</li>
-										<li>目录3</li>
-									</ul>
-								</li>
-								<!-- 这是第二个一级菜单 -->
-								<li data-options="state:'closed'"><!-- 默认为关闭状态 -->
-									<span>多级目录2</span>
-									<ul>
-										<li>目录1</li>
-										<li>目录2</li>
-										<li>目录3</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
 					</ul>
 				</div>
 			</div>

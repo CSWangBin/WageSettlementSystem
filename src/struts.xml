@@ -23,9 +23,10 @@
     <package name="admin-struts" extends="json-default" namespace="/admin">
         <action name="*" class="com.cs.action.SAdminAction" method="{1}">
             <result name="all" type="json"></result>
+            <result name="query" type="json"></result>
             <!--<result name="delete" type="json"/>-->
-            <!--<result name="update" type="json"/>-->
-            <!--<result name="add" type="json"/>-->
+            <result name="update" type="json"/>
+            <result name="add" type="json"/>
             <!--<result name="select" type="json"/>-->
         </action>
     </package>
